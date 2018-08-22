@@ -6,13 +6,12 @@
 /*   By: rejocic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 14:18:56 by rejocic           #+#    #+#             */
-/*   Updated: 2018/08/11 12:04:44 by rejocic          ###   ########.fr       */
+/*   Updated: 2018/08/22 13:03:32 by rejocic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft/libft.h"
-#include <limits.h>
 
 int		res_start(char **res, char **line)
 {
