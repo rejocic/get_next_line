@@ -6,7 +6,7 @@
 /*   By: rejocic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 14:18:56 by rejocic           #+#    #+#             */
-/*   Updated: 2018/08/22 13:03:32 by rejocic          ###   ########.fr       */
+/*   Updated: 2018/08/22 17:04:12 by rejocic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		get_next_line(const int fd, char **line)
 {
 	int			r;
 	char		str[BUFF_SIZE + 1];
-	static char	*res[4096];
+	static char	*res[MAX_FD];
 
 	if (fd < 0)
 		return (-1);
