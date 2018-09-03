@@ -29,11 +29,7 @@ int		main(int argc, char **argv)
 	{
 		fd = open(argv[i], O_RDONLY);
 		while ((r = get_next_line(fd, &line)) > 0)
-		{
-			printf("%d\n", r);
 			ft_putendl(line);
-		}
-		printf("%d\n", r);
 		i++;
 	}
 	close(fd);
