@@ -24,9 +24,11 @@ int		res_start(char **res, char **line)
 	if ((*res)[i] == '\n')
 	{
 		(*res)[i] = '\0';
-		*line = ft_strdup(*res);
+		if ((*line = ft_strdup(*res)) == NULL)
+			return (-1);
 		tmp = *res;
-		*res = ft_strdup((*res) + (i + 1));
+		if ((*res = ft_strdup((*res) + (i + 1))) == NULL)
+			return (-1);
 		free(tmp);
 		return (1);
 	}
@@ -44,9 +46,11 @@ int		res_end(char **res, char **line)
 	if ((*res)[i] == '\n')
 	{
 		(*res)[i] = '\0';
-		*line = ft_strdup(*res);
+		if ((*line = ft_strdup(*res)) == NULL)
+			return (-1);
 		tmp = *res;
-		*res = ft_strdup((*res) + (i + 1));
+		if ((*res = ft_strdup((*res) + (i + 1))) == NULL)
+			return (-1);
 		free(tmp);
 		return (1);
 	}
@@ -56,6 +60,21 @@ int		res_end(char **res, char **line)
 		*res = ft_strnew(0);
 		return (1);
 	}
+	return (0);
+}
+
+int		if_newline(char **res, char **line, char *str, int i)
+{
+	char	*tmp;
+
+	(str)[i] = '\0';
+	if ((*line = ft_strjoin(*res, str)) == NULL)
+		return (-1);
+	tmp = *res;
+	if ((*res = ft_strdup((str) + (i + 1))) == NULL)
+		return (-1);
+	free(tmp);
+	return (1);
 }
 
 int		readfunc(char **res, char **line, char *str, int r)
@@ -68,18 +87,12 @@ int		readfunc(char **res, char **line, char *str, int r)
 	while ((str)[i] != '\n' && i < r)
 		i++;
 	if ((str)[i] == '\n')
-	{
-		(str)[i] = '\0';
-		*line = ft_strjoin(*res, str);
-		tmp = *res;
-		*res = ft_strdup((str) + (i + 1));
-		free(tmp);
-		return (1);
-	}
+		return (if_newline(res, line, str, i));
 	else
 	{
 		tmp = *res;
-		*res = ft_strjoin(*res, str);
+		if ((*res = ft_strjoin(*res, str)) == NULL)
+			return (-1);
 		free(tmp);
 	}
 	return (0);
