@@ -6,7 +6,7 @@
 /*   By: rejocic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 14:18:56 by rejocic           #+#    #+#             */
-/*   Updated: 2018/08/22 17:04:12 by rejocic          ###   ########.fr       */
+/*   Updated: 2018/09/03 21:14:59 by rejocic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		readfunc(char **res, char **line, char *str, int r)
 int		get_next_line(const int fd, char **line)
 {
 	int			r;
-	char		str[BUFF_SIZE + 1];
+	char		*str;
 	static char	*res[MAX_FD];
 
 	if (fd < 0)
@@ -111,9 +111,15 @@ int		get_next_line(const int fd, char **line)
 	if (res[fd] != '\0')
 		if ((res_start(&res[fd], line)) == 1)
 			return (1);
+	if ((str = ft_strnew(BUFF_SIZE)) == NULL)
+		return (-1);
 	while ((r = read(fd, str, BUFF_SIZE)) > 0)
 		if ((readfunc(&res[fd], line, str, r)) == 1)
+		{
+			free(str);
 			return (1);
+		}
+	free(str);
 	if (r == 0 && res[fd][r] != '\0')
 		return (res_end(&res[fd], line));
 	if (r < 0)
