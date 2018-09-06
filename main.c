@@ -6,7 +6,7 @@
 /*   By: rejocic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 15:12:52 by rejocic           #+#    #+#             */
-/*   Updated: 2018/09/03 20:57:33 by rejocic          ###   ########.fr       */
+/*   Updated: 2018/09/06 11:42:45 by rejocic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 int		main(int argc, char **argv)
 {
-	int		i;
-	int		fd;
-	int		r;
-	char	*line;
+	 int		i;
+	 int		fd;
+	 int		r;
+	 char		*line;
 
-	i = 1;
-	r = 0;
-	line = NULL;
-	while (i < argc)
-	{
-		fd = open(argv[i], O_RDONLY);
-		while ((r = get_next_line(fd, &line)) > 0)
-			ft_putendl(line);
-		i++;
-	}
-	close(fd);
-	return (0);
+	 i = 1;
+	 r = 0;
+	 line = NULL;
+	 while (i < argc)
+	 {
+		 fd = open(argv[i], O_RDONLY);
+		 while ((r = get_next_line(fd, &line)) > 0)
+		 	ft_putendl(line);
+	 	i++;
+	 }
+	 close(fd);
+	 return (0);
 }

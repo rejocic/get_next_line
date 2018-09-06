@@ -57,7 +57,7 @@ int		res_end(char **res, char **line)
 	else
 	{
 		*line = *res;
-		*res = ft_strnew(0);
+		*res = NULL;
 		return (1);
 	}
 	return (0);
@@ -104,7 +104,7 @@ int		get_next_line(const int fd, char **line)
 	char		*str;
 	static char	*res[MAX_FD];
 
-	if (fd < 0)
+	if (fd < 0 || line == NULL)
 		return (-1);
 	if (res[fd] == NULL)
 		res[fd] = ft_strnew(0);

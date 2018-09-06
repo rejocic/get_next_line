@@ -6,13 +6,13 @@
 #    By: rejocic <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/09 18:58:11 by rejocic           #+#    #+#              #
-#    Updated: 2018/08/11 11:22:42 by rejocic          ###   ########.fr        #
+#    Updated: 2018/09/04 23:12:12 by rejocic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = GNL
 
-CC = @gcc -Wall -Werror -Wextra
+CC = @gcc -Wall -Werror -Wextra -fsanitize=address
 
 SRC = main.c get_next_line.c
 
