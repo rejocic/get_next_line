@@ -6,7 +6,7 @@
 /*   By: rejocic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 14:18:56 by rejocic           #+#    #+#             */
-/*   Updated: 2018/09/03 21:14:59 by rejocic          ###   ########.fr       */
+/*   Updated: 2018/09/07 13:00:01 by rejocic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		get_next_line(const int fd, char **line)
 	char		*str;
 	static char	*res[MAX_FD];
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || line == NULL || fd > MAX_FD)
 		return (-1);
 	if (res[fd] == NULL)
 		res[fd] = ft_strnew(0);
